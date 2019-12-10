@@ -2,6 +2,15 @@
 #import <TVSystemMenuUI/TVSMModuleContentViewController.h>
 #import <TVSystemMenuUI/TVSMActionModule.h>
 
+//i just made this up, but it accurately tracks the style
+
+typedef NS_ENUM(NSInteger, TVSMActionButtonStyle) {
+    TVSMActionButtonStyleSmall = 0,
+    TVSMActionButtonStyleMedium,
+    TVSMActionButtonStyleLarge
+};
+
+
 @interface HWModule : TVSMActionModule
 
 +(long long)buttonStyle;

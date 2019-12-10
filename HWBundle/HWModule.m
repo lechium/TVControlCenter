@@ -30,7 +30,7 @@
 
 
 +(long long)buttonStyle {
-    return 1;
+    return TVSMActionButtonStyleMedium;
 }
 
 -(id)contentViewController {
@@ -39,7 +39,7 @@
     //TVSMButtonViewController *buttonController = [[TVSMButtonViewController alloc] init];
     //[buttonController setTitleText:@"Hello World"];
     //[buttonController setSecondaryText:@"(we really out here)"];
-    [buttonController setStyle:1];
+    [buttonController setStyle:TVSMActionButtonStyleMedium];
     NSString *packageFile = [[self bundle] pathForResource:@"checkra1n" ofType:@"png"];
     [buttonController setImage:[UIImage imageWithContentsOfFile:packageFile]];
     return buttonController;
