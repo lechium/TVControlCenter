@@ -6,8 +6,8 @@ BUNDLE_NAME = HWBundle
 
 HWBundle_FILES = HWModule.m
 HWBundle_INSTALL_PATH = /Library/TVSystemMenuModules
-HWBundle_FRAMEWORKS = UIKit Foundation
-HWBundle_PRIVATE_FRAMEWORKS = TVSystemMenuUI
+HWBundle_FRAMEWORKS = UIKit Foundation CoreFoundation CoreServices
+HWBundle_PRIVATE_FRAMEWORKS = TVSystemMenuUI PineBoardServices
 HWBundle_CFLAGS = -fobjc-arc -F. -I.
 HWBundle_LDFLAGS += -F. -I. #-undefined dynamic_lookup
 

@@ -3,6 +3,11 @@
 #import <TVSystemMenuUI/TVSMButtonViewController.h>
 #include "HWModule.h"
 
+@interface LSApplicationWorkspace : NSObject
++(id)defaultWorkspace;
+-(BOOL)openApplicationWithBundleID:(id)arg1;
+@end
+
 @interface PBSSystemService : NSObject
 +(id)sharedInstance;
 -(void)deactivateApplication;
@@ -17,49 +22,44 @@
 @interface PBSSystemServiceConnection : NSObject
 +(id)sharedConnection;
 -(id)systemServiceProxy;
-
+-(BOOL)isValid;
+-(void)setValid:(BOOL)arg1;
 @end
 
 @implementation HWModule
 
--(void)contentModuleViewControllerDidTriggerAction:(id)arg1 {
-    
-    [[NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/PineBoardServices.framework/"] load];
-    Class PBSSystemServiceConnection = NSClassFromString(@"PBSSystemServiceConnection");
-    id connection = [PBSSystemServiceConnection sharedConnection];
-    id ssp = [connection systemServiceProxy];
-    [ssp sleepSystemForReason:@"PBSSleepReasonUserSystemMenu"];
-    //[ssp relaunchBackboardd];
-    NSLog(@"[HWModule] did trigger connection: %@ ssp: %@", connection, ssp);
-}
 
 +(long long)buttonStyle {
-    return 2;
+    return 1;
 }
 
 -(id)contentViewController {
     
     TVSMButtonViewController *buttonController = [super contentViewController];
-    NSLog(@"[HWModule] my bundle:%@", [NSBundle mainBundle]);
-    NSLog(@"[HWModule] buttonController:%@", buttonController);
     //TVSMButtonViewController *buttonController = [[TVSMButtonViewController alloc] init];
-    [buttonController setTitleText:@"HEY! YOU!, LOOK OVER HERE!!!"];
-    [buttonController setSecondaryText:@"(we really out here)"];
-    [buttonController setStyle:2];
-    [buttonController setDelegate:self];
-    NSLog(@"[HWModule] my bundle:%@", [self bundle]);
-    NSString *packageFile = [[self bundle] pathForResource:@"Package" ofType:@"png"];
+    //[buttonController setTitleText:@"Hello World"];
+    //[buttonController setSecondaryText:@"(we really out here)"];
+    [buttonController setStyle:1];
+    NSString *packageFile = [[self bundle] pathForResource:@"checkra1n" ofType:@"png"];
     [buttonController setImage:[UIImage imageWithContentsOfFile:packageFile]];
-    //[buttonController setImage:[UIImage imageNamed:@"Package"]];
-    
-    
     return buttonController;
 }
 
 -(void)handleAction {
 
-    NSLog(@"handleAction");
+    NSLog(@"[HWModule] handleAction");
+    LSApplicationWorkspace *ws = [LSApplicationWorkspace defaultWorkspace];
+    [ws openApplicationWithBundleID:@"kjc.loader"];
+    /*
+    id connection = [PBSSystemServiceConnection sharedConnection];
+    id ssp = [connection systemServiceProxy];
+    //[ssp setValid:true];
+    //BOOL isValid = [ssp isValid];
+    [ssp sleepSystemForReason:@"PBSSleepReasonUserSystemMenu"];
+    //[ssp relaunchBackboardd];
     
+    NSLog(@"[HWModule] did trigger connection: %@ ssp: %@", connection, ssp);
+     */
 }
 
 -(BOOL)dismissAfterAction {
