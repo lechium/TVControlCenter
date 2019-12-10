@@ -3,6 +3,8 @@ Research &amp; Documentation on implementation of control center bundles on tvOS
 
 Control Center on tvOS is split up into 3 components: TVSystemMenuService (An invisible application), TVSystemMenuUI.framework (a private framework) and a series of bundles (stored in /System/Library/TVSystemMenuModules)
 
+![Screenshot](https://pbs.twimg.com/media/ELZ_vIGUcAEbft5?format=jpg&name=large "Screenshot")  <br/>
+
 ## TVSystemMenuService
 
 This application is the control center of well... control center, it handles the actual UI that is displayed to the user and the handling of whic modules are available and visible.
@@ -87,5 +89,5 @@ There are header dumps of all the afformentioned existing plugins available on t
 
 There is an aggegate theos sample that will build the tweak needed to run plugins from /Library/TVSystemMenuModules instead of the default system path AND the sample HelloWorld plugin, it attempts to restart backboardd, but that part isnt quite working yet. 
 
-![Screenshot](https://pbs.twimg.com/media/ELZ_vIGUcAEbft5?format=jpg&name=large "Screenshot")  <br/>
-![alt text](TVControlCenter.mp4 "Video Preview")
+
+[Video Preview](TVControlCenter.mp4)
