@@ -52,8 +52,10 @@ Implementation file
     //not sure if this is only called because i set the delagate below or not
 }
 
+//button style 0 = small square, button style 1 = medium sized rectangle, 2 = Full size button
+
 +(long long)buttonStyle {
-    return 2; //don't know what the different styles are yet, this is the same used by the Sleep Module
+    return 2; // Full size button
 }
 
 -(id)contentViewController {
