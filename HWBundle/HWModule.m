@@ -28,7 +28,8 @@
     Class PBSSystemServiceConnection = NSClassFromString(@"PBSSystemServiceConnection");
     id connection = [PBSSystemServiceConnection sharedConnection];
     id ssp = [connection systemServiceProxy];
-    [ssp relaunchBackboardd];
+    [ssp sleepSystemForReason:@"PBSSleepReasonUserSystemMenu"];
+    //[ssp relaunchBackboardd];
     NSLog(@"[HWModule] did trigger connection: %@ ssp: %@", connection, ssp);
 }
 
@@ -38,10 +39,10 @@
 
 -(id)contentViewController {
     
-    id orig = [super contentViewController];
+    TVSMButtonViewController *buttonController = [super contentViewController];
     NSLog(@"[HWModule] my bundle:%@", [NSBundle mainBundle]);
-    NSLog(@"[HWModule] orig:%@", orig);
-    TVSMButtonViewController *buttonController = [[TVSMButtonViewController alloc] init];
+    NSLog(@"[HWModule] buttonController:%@", buttonController);
+    //TVSMButtonViewController *buttonController = [[TVSMButtonViewController alloc] init];
     [buttonController setTitleText:@"HEY! YOU!, LOOK OVER HERE!!!"];
     [buttonController setSecondaryText:@"(we really out here)"];
     [buttonController setStyle:2];
