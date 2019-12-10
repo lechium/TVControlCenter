@@ -17,6 +17,10 @@ This is an ideal place to inject so we can get our own bundles loaded, interesti
 
 The private framework that contains all the classes we will be inheriting from to create a bundle for control center.
 
+I took the header dump from the basic 'Sleep Module' to determine how these bundles work, it is a perfect template to create our own simple bundle off of.
+
+Header file
+
 ```Objective-C
 
 #import <TVSystemMenuUI/TVSMActionModule.h>
@@ -31,7 +35,8 @@ The private framework that contains all the classes we will be inheriting from t
 @end
 
 ```
-I took the header dump from the basic 'Sleep Module' to determine how these bundles work, it is a perfect template to create our own simple bundle off of.
+
+Implementation file
 
 ```Objective-C
 #import <UIKit/UIKit.h>
@@ -80,6 +85,6 @@ I took the header dump from the basic 'Sleep Module' to determine how these bund
 
 There are header dumps of all the afformentioned existing plugins available on this repo, a mostly working theos template & a sample project (the one i showed the video of earlier today on twitter)
 
-There is an aggegate sample that will build the tweak needed to run plugins from /Library/TVSystemMenuModules instead of the default system path, it is generally a good idea to keep our bundles separate from the official system ones.
+There is an aggegate theos sample that will build the tweak needed to run plugins from /Library/TVSystemMenuModules instead of the default system path AND the sample HelloWorld plugin, it attempts to restart backboardd, but that part isnt quite working yet. 
 
 
