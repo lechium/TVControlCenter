@@ -87,6 +87,6 @@ There are header dumps of all the afformentioned existing plugins available on t
 
 There is an aggegate theos sample that will build the tweak needed to run plugins from /Library/TVSystemMenuModules instead of the default system path AND the sample HelloWorld plugin, it attempts to restart backboardd, but that part isnt quite working yet. 
 
-[Screenshot](https://pbs.twimg.com/media/ELZ_vIGUcAEbft5?format=jpg&name=large)
-[Video Sample](https://pbs.twimg.com/media/ELZ_vIGUcAEbft5?format=jpg&name=large)
+[Screenshot](https://pbs.twimg.com/media/ELZ_vIGUcAEbft5?format=jpg&name=large) <br/>
+[Video Sample](https://twitter.com/nitoTV/status/1204292437406961664?s=20)
 
