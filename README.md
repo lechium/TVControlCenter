@@ -86,7 +86,7 @@ in the checkra1n folder is the source of the exact bundle that is (isnt yet, but
 
 [Video Preview](TVControlCenter.mp4)
 
-## Creating & releasing your own bundle
+## Create your own bundle package
 
 1. Install theos (if you haven't already)
 2. Drop tvos_control_center_bundle.nic.tar into $THEOS/templates/
