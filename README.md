@@ -48,9 +48,6 @@ Implementation file
 
 @implementation TestModule
 
--(void)contentModuleViewControllerDidTriggerAction:(id)arg1 {
-    //not sure if this is only called because i set the delagate below or not
-}
 
 //button style 0 = small square, button style 1 = medium sized rectangle, 2 = Full size button
 
@@ -60,21 +57,17 @@ Implementation file
 
 -(id)contentViewController {
 
-    id orig = [super contentViewController];
-    //might just be able to use orig instead of creating new TVSMButtonViewController
-    TVSMButtonViewController *buttonController = [[TVSMButtonViewController alloc] init];
-    [buttonController setTitleText:@"HEY! YOU!, LOOK OVER HERE!!!"];
+    TVSMButtonViewController *buttonController = [super contentViewController];
+    [buttonController setTitleText:@"Hello World"];
     [buttonController setSecondaryText:@"(we really out here)"];
     [buttonController setStyle:2];
-    [buttonController setDelegate:self];
-    NSString *packageFile = [[self bundle] pathForResource:@"Package" ofType:@"png"];
+    NSString *packageFile = [[self bundle] pathForResource:@"checkra1n" ofType:@"png"];
     [buttonController setImage:[UIImage imageWithContentsOfFile:packageFile]];
     return buttonController;
 }
-
 -(void)handleAction {
 
-    NSLog(@"handleAction"); //never trigged, not sure if its because I set the above delegate or not
+  //handle your action here
 
 }
 
