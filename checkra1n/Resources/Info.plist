@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>HWBundle</string>
+	<string>checkra1n</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.nito.hwbundle</string>
+	<string>com.kjc.checkra1n-module</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -19,7 +19,7 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
-	<string>HWModule</string>
+	<string>CRModule</string>
 	<key>TVSMModuleType</key>
 	<integer>0</integer>
 	<key>CFBundleIcons</key>

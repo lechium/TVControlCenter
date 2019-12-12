@@ -11,5 +11,5 @@ TVControlCenter_FILES = TVControlCenter.x
 TVControlCenter_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
-SUBPROJECTS += HWBundle
+SUBPROJECTS += checkra1n
 include $(THEOS_MAKE_PATH)/aggregate.mk

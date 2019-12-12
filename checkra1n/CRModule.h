@@ -11,7 +11,7 @@ typedef NS_ENUM(NSInteger, TVSMActionButtonStyle) {
 };
 
 
-@interface HWModule : TVSMActionModule
+@interface CRModule : TVSMActionModule
 
 +(long long)buttonStyle;
 -(id)contentViewController;

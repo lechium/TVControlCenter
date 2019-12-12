@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <TVSystemMenuUI/TVSMButtonViewController.h>
-#include "HWModule.h"
+#include "CRModule.h"
 
 @interface LSApplicationWorkspace : NSObject
 +(id)defaultWorkspace;
@@ -26,7 +26,7 @@
 -(void)setValid:(BOOL)arg1;
 @end
 
-@implementation HWModule
+@implementation CRModule
 
 
 +(long long)buttonStyle {
