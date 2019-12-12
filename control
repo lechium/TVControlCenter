@@ -1,7 +1,7 @@
 Package: com.nito.tvcontrolcenter
 Name: TVControlCenter
 Depends: mobilesubstrate
-Version: 0.0.1
+Version: 1.0
 Architecture: appletvos-arm64
 Description: Load your own control center bundles!
 Maintainer: Kevin Bradley

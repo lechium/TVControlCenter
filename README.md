@@ -80,9 +80,18 @@ Implementation file
 
 ## Samples
 
-There are header dumps of all the afformentioned existing plugins available on this repo, a mostly working theos template & a sample project (the one i showed the video of earlier today on twitter)
+There are header dumps of all the afformentioned existing plugins available on this repo, a mostly working theos template & a sample project
 
-There is an aggegate theos sample that will build the tweak needed to run plugins from /Library/TVSystemMenuModules instead of the default system path AND the sample HelloWorld plugin, it attempts to restart backboardd, but that part isnt quite working yet. 
-
+in the checkra1n folder is the source of the exact bundle that is (isnt yet, but will be) used in the next update of checkra1n for tvOS
 
 [Video Preview](TVControlCenter.mp4)
+
+## Creating & releasing your own bundle
+
+1. Install theos (if you haven't already)
+2. Drop tvos_control_center_bundle.nic.tar into $THEOS/templates/
+3. run $THEOS/bin/nic.pl
+4. choose tvos/control_center_bundle
+5. Profit
+
+The sample project this creates should give you everything you need to get going, including a sample control file that will depend upon 'com.nito.tvcontrolcenter'
