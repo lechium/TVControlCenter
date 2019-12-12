@@ -9,6 +9,14 @@
 #import <TVSystemMenuUI/TVSMModule.h>
 #import <TVSystemMenuUI/TVSMModuleContentViewControllerDelegate.h>
 
+//i just made this up, but it accurately tracks the style
+
+typedef NS_ENUM(NSInteger, TVSMActionButtonStyle) {
+    TVSMActionButtonStyleSmall = 0,
+    TVSMActionButtonStyleMedium,
+    TVSMActionButtonStyleLarge
+};
+
 @protocol TVSMModuleContentViewController, TVSMModuleDelegate;
 @class NSArray, TVSMButtonViewController, NSString, UIImage, NSBundle;
 
