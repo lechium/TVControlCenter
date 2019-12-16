@@ -8,11 +8,8 @@
     
      id connection = [PBSSystemServiceConnection sharedConnection];
      id ssp = [connection systemServiceProxy];
-     //[ssp sleepSystemForReason:@"PBSSleepReasonUserSystemMenu"];
      [ssp relaunchBackboardd];
-     
-     NSLog(@"[CRModule] did trigger connection: %@ ssp: %@", connection, ssp);
-    
+   
 }
 
 

@@ -2,6 +2,7 @@
 	Filter = {
 		Bundles = (
 			"com.apple.TVSystemMenuService",
+			"com.apple.PineBoard",
 		);
 	};
 }
