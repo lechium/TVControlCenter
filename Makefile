@@ -7,7 +7,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = TVControlCenter
 
-TVControlCenter_FILES = TVControlCenter.x FindProcess/FindProcess.m
+TVControlCenter_FILES = TVControlCenter.x
 TVControlCenter_CFLAGS = -fobjc-arc -IFindProcess
 
 include $(THEOS_MAKE_PATH)/tweak.mk

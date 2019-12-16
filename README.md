@@ -7,7 +7,7 @@ Control Center on tvOS is split up into 3 components: TVSystemMenuService (An in
 
 ## TVSystemMenuService
 
-This application is the control center of well... control center, it handles the actual UI that is displayed to the user and the handling of whic modules are available and visible.
+This application is the control center of well... control center, it handles the actual UI that is displayed to the user and the handling of which modules are available and visible.
 
 Doing very broad cursory coverage of each component, this information is hot off the presses!
 
@@ -61,7 +61,7 @@ Implementation file
     [buttonController setTitleText:@"Hello World"];
     [buttonController setSecondaryText:@"(we really out here)"];
     [buttonController setStyle:2];
-    NSString *packageFile = [[self bundle] pathForResource:@"checkra1n" ofType:@"png"];
+    NSString *packageFile = [[self bundle] pathForResource:@"Package" ofType:@"png"];
     [buttonController setImage:[UIImage imageWithContentsOfFile:packageFile]];
     return buttonController;
 }
