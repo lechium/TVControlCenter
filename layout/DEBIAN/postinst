@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+pid=`ps ax | grep [T]VSystemMenuService | cut -d "?" -f 1 | tr --d " "`
+
+if [ ! -z $pid ]; then
+	kill $pid
+fi
+
+echo 'finish:restart'
