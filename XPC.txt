@@ -1,0 +1,79 @@
+
+
+in the daemon, you have a class that implements NSXPCListenerDelegate
+For ReProvision, that is RPVDaemonListener
+
+To initialise XPC incoming connections, you follow the pattern used here:
+#import "RPVDaemonListener.h"
+
+@interface NSXPCListener (Private)
+- (id)initWithMachServiceName:(NSString*)arg1;
+@end
+
+int main(int argc, const char *argv[])
+{
+    NSLog(@"*** [reprovisiond] :: Loading up daemon.");
+    
+    // initialize our daemon
+    RPVDaemonListener *daemon = [[RPVDaemonListener alloc] init];
+    [daemon initialiseListener];
+    
+    // Bypass compiler prohibited errors
+    Class NSXPCListenerClass = NSClassFromString(@"NSXPCListener");
+    
+    NSXPCListener *listener = [[NSXPCListenerClass alloc] initWithMachServiceName:@"com.matchstic.reprovisiond"];
+    listener.delegate = daemon;
+    [listener resume];
+    
+    // Run the run loop forever.
+    [[NSRunLoop currentRunLoop] run];
+    
+    return EXIT_SUCCESS;
+}
+The mach service name must match what's in your launchd plist, such as this one:
+
+
+	<key>Label</key>
+	<string>com.matchstic.reprovisiond</string>
+	<key>MachServices</key>
+	<dict>
+		<key>com.matchstic.reprovisiond</key>
+		<true/>
+	</dict>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/bin/reprovisiond</string>
+	</array>
+	<key>UserName</key>
+	<string>mobile</string>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+
+The main keys are the ones in use there
+In the class that implements NSXPCListenerDelegate, you need to implement 
+- (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection
+
+The key thing to do is to have this for one-way communication:
+
+    [newConnection setExportedInterface:[NSXPCInterface interfaceWithProtocol:@protocol(RPVDaemonProtocol)]];
+    [newConnection setExportedObject:self];
+
+Where RPVDaemonProtocol is the methods exposed over XPC
+
+On the client side, keep a reference to your xpc connection, and initialise it like so:
+
+    self.daemonConnection = [[NSXPCConnection alloc] initWithMachServiceName:@"com.matchstic.reprovisiond"];
+    self.daemonConnection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(RPVDaemonProtocol)];
+
+Again, the mach service name is matching the daemon and launchd plist
+And when you're done setting up, call 
+
+[self.daemonConnection resume];
+
+After that, use the following pattern to call anything defined in the protocol between the daemon and caller::
+
+[[self.daemonConnection remoteObjectProxy] thingToCall];
+
+You can do async comms back I think, Apple has docs for macOS that works for iOS too

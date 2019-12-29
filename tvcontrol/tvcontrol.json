@@ -1,0 +1,7 @@
+{
+	"LongDescription": "Add custom modules to the tvOS control center (activated with the home button on the siri remote)",
+	"MainTextColor": "FFFFFF",
+	"FlowcaseIconURL": "https://nitosoft.com/ATV4/tvcontrol/tvcontrol_banner.png",
+	"AppIconURL": "https://nitosoft.com/ATV4/tvcontrol/tvcc_icon.png",
+  "BackgroundImageURL": "https://nitosoft.com/ATV4/tvcontrol/tvcontrol_bg.png",
+}

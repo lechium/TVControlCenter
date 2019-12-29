@@ -1,0 +1,9 @@
+Package: com.nito.testbundle
+Name: TVControlCenter
+Depends: mobilesubstrate
+Version: 1.0
+Architecture: appletvos-arm64
+Description: Test bundle
+Maintainer: Kevin Bradley
+Author: Kevin Bradley
+Section: Tweaks
