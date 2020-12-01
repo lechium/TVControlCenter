@@ -9,6 +9,20 @@ Control Center on tvOS is split up into 3 components: TVSystemMenuService (An in
 
 This application is the control center of well... control center, it handles the actual UI that is displayed to the user and the handling of which modules are available and visible.
 
+### 14+ Changes
+
+In tvOS 14+ there are some nice changes to deal with toggle states and tint coloring and some (currently unresearched stuff) of your modules in TVSMButtonViewController, specifically:
+
+```Objective-C
+@property (nonatomic,copy) UIColor * titleTintColor API_AVAILABLE(tvos(14.0));
+@property (nonatomic,copy) UIColor * subtitleTintColor API_AVAILABLE(tvos(14.0));
+@property (nonatomic,copy) UIColor * symbolTintColor API_AVAILABLE(tvos(14.0));
+@property (nonatomic,retain) TVSMProgressView * progressView API_AVAILABLE(tvos(14.0));
+@property (nonatomic,copy) TVSMCAPackageView * caPackageView API_AVAILABLE(tvos(14.0));
+@property (assign,nonatomic) BOOL toggledOn API_AVAILABLE(tvos(14.0));   
+
+```
+
 ### View controller hierarchy
 
 The root view controller is a [_UIViewServiceViewControllerOperator](https://github.com/lechium/tvOS142Headers/blob/c7696f6d760e4822f61b9f2c2adcd18749700fda/System/Library/PrivateFrameworks/UIKitCore.framework/_UIViewServiceViewControllerOperator.h)
@@ -136,7 +150,7 @@ Implementation file
 
 There are header dumps of all the afformentioned existing plugins available on this repo, a mostly working theos template & a sample project
 
-in the checkra1n folder is the source of the exact bundle that is (isnt yet, but will be) used in the next update of checkra1n for tvOS
+in the checkra1n folder is the source of the exact bundle that is used in checkra1n for tvOS
 
 [Video Preview](TVControlCenter.mp4)
 
