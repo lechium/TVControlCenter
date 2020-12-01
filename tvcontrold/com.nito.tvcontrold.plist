@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.nito.tvcontrold</string>
+	<string>cy:com.nito.tvcontrold</string>
 	<key>MachServices</key>
 	<dict>
-		<key>com.nito.tvcontrold</key>
+		<key>cy:com.nito.tvcontrold</key>
 		<true/>
 	</dict>
 	<key>ProgramArguments</key>

@@ -9,6 +9,34 @@ Control Center on tvOS is split up into 3 components: TVSystemMenuService (An in
 
 This application is the control center of well... control center, it handles the actual UI that is displayed to the user and the handling of which modules are available and visible.
 
+### View controller heirarchy
+
+The root view controller is a [_UIViewServiceViewControllerOperator](https://github.com/lechium/tvOS142Headers/blob/c7696f6d760e4822f61b9f2c2adcd18749700fda/System/Library/PrivateFrameworks/UIKitCore.framework/_UIViewServiceViewControllerOperator.h)
+
+We are interested in 
+```Objective-C
+    UIViewController* _localViewController;
+```
+
+Which ends up being [TVSMHostViewController](https://github.com/lechium/tvOS142Headers/blob/master/Applications/TVSystemMenuService/TVSMHostViewController.h)
+
+In the _localViewController view we are particulary interestd in [_mainViewController](https://github.com/lechium/tvOS142Headers/blob/master/Applications/TVSystemMenuService/TVSMMainViewController.h)
+```Objective-C
+    TVSMMainViewController *_mainViewController;
+```
+
+Digging deeper yet [_gridContainerViewController](https://github.com/lechium/tvOS142Headers/blob/master/Applications/TVSystemMenuService/TVSMButtonGridContainerViewController.h)
+```Objective-C
+    TVSMButtonGridContainerViewController *_gridContainerViewController;
+```
+
+Almost there! [_collectionViewController](https://github.com/lechium/tvOS142Headers/blob/master/Applications/TVSystemMenuService/TVSMButtonGridCollectionViewController.h)
+```Objective-C
+    TVSMButtonGridCollectionViewController *_collectionViewController
+```
+
+### Modules
+
 Doing very broad cursory coverage of each component, this information is hot off the presses!
 
 _TVSMModuleInfo calls +(id)_defaultModuleDirectories which currently only points towards '/System/Library/TVSystemMenuModules'

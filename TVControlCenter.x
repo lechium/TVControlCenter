@@ -46,7 +46,11 @@ and voila!
 -(BOOL)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2 {
     %log;
     BOOL orig = %orig;
-    [self mattDaemon];
+    NSString *binName =  [[[[NSProcessInfo processInfo] arguments] lastObject]lastPathComponent];
+    NSLog(@"[[NSProcessInfo processInfo] arguments]: %@", binName);
+    if ([binName isEqualToString:@"TVSystemMenuService"]){
+        [self mattDaemon];
+    }
     return orig;
 }
 
@@ -61,7 +65,7 @@ and voila!
 %new - (NSXPCConnection *)daemonConnection {
     id dc = objc_getAssociatedObject(self, @selector(daemonConnection));
     if (dc == nil){
-        dc = [[NSXPCConnection alloc] initWithMachServiceName:@"com.nito.tvcontrold"];
+        dc = [[NSXPCConnection alloc] initWithMachServiceName:@"cy:com.nito.tvcontrold"];
         objc_setAssociatedObject(self, @selector(operationArray), dc, OBJC_ASSOCIATION_RETAIN);
     }
     return dc;
@@ -86,10 +90,15 @@ This hack removes that restriction entirely. Not a fan of this tbh but it will h
     char path_buffer[MAXPATHLEN];
     proc_pidpath(pid, (void*)path_buffer, sizeof(path_buffer));
     NSString *processName = [[NSString stringWithUTF8String:path_buffer] lastPathComponent];
+    NSLog(@"[TVControlCenter.x]: %@ value for %@ is: %@",processName, entitlement, orig);
+    
     //com.apple.private.security.container-required
+    if ([entitlement isEqualToString:@"com.apple.security.exception.mach-lookup.global-name"]){
+        NSLog(@"[TVControlCenter.x]: %@ value for %@ is: %@",processName, entitlement, orig);
+    }
     if (orig == nil){
         if ([processName isEqualToString:@"TVSystemMenuService"]){
-                NSLog(@"override entitlement: %@ for name: %@",entitlement,processName);
+                NSLog(@"[TVControlCenter.x] override entitlement: %@ for name: %@",entitlement,processName);
                 return [NSNumber numberWithBool:true];
         } else {
             NSLog(@"[TVControlCenter.x] %@ %@ %@ for %@ is nil!!", self,NSStringFromSelector(_cmd),entitlement, processName);

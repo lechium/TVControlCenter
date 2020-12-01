@@ -14,7 +14,7 @@ int main(int argc, const char *argv[])
     // Bypass compiler prohibited errors
     Class NSXPCListenerClass = NSClassFromString(@"NSXPCListener");
     
-    NSXPCListener *listener = [[NSXPCListenerClass alloc] initWithMachServiceName:@"com.nito.tvcontrold"];
+    NSXPCListener *listener = [[NSXPCListenerClass alloc] initWithMachServiceName:@"cy:com.nito.tvcontrold"];
     listener.delegate = daemon;
     [listener resume];
     

@@ -1,3 +1,5 @@
+#import <Foundation/NSString.h>
+#import <Foundation/Foundation.h>
 #import "TVCCDaemonListener.h"
 #import "TVCCApplicationProtocol.h"
 #import "NSTask.h"

@@ -27,8 +27,7 @@
 
 -(void)handleAction {
 
-    LSApplicationWorkspace *ws = [LSApplicationWorkspace defaultWorkspace];
-    [ws openApplicationWithBundleID:@"kjc.loader"];
+    [[LSApplicationWorkspace defaultWorkspace] openApplicationWithBundleID:@"kjc.loader"];
 
 }
 
