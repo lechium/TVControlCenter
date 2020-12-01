@@ -35,6 +35,32 @@ Almost there! [_collectionViewController](https://github.com/lechium/tvOS142Head
     TVSMButtonGridCollectionViewController *_collectionViewController
 ```
 
+cycript example of hooking at a specific module through the the view hierarchy:
+
+```Objective-C
+
+root# cycript -p TVSystemMenuService
+
+cy# self = [UIApp keyWindow ].rootViewController
+    #"<_UIViewServiceViewControllerOperator: 0x122935400>"
+cy# local = [self valueForKey:@"_localViewController"] //TVSMHostViewController
+    #"<TVSMHostViewController: 0x121e5fd90>"
+cy# main = [local mainViewController ] //TVSMMainViewController
+    #"<TVSMMainViewController: 0x121d9f610>"
+cy# grid = [main valueForKey:@"_gridContainerViewController"] //TVSMButtonGridContainerViewController
+    #"<TVSMButtonGridContainerViewController: 0x121d15ac0>"
+cy# collection = [grid valueForKey:"_collectionViewController"] // TVSMButtonGridCollectionViewController
+    #"<TVSMButtonGridCollectionViewController: 0x121d879f0>"
+cy# sections = [collection numberOfSectionsInCollectionView: collection.collectionView]
+    2
+cy# items =[collection collectionView: collection.collectionView numberOfItemsInSection: sections-1]
+    6
+cy# ip = [NSIndexPath indexPathForItem: items-1 inSection: 1]
+    #"<NSIndexPath: 0x93cc60848b2fff37> {length = 2, path = 1 - 5}"
+cy# mod =  [collection _moduleAtIndexPath: ip]
+    #"<NTVVPNModule: 0x282caf360>"
+```
+
 ### Modules
 
 Doing very broad cursory coverage of each component, this information is hot off the presses!
