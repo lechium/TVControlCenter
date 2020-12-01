@@ -23,6 +23,8 @@ In tvOS 14+ there are some nice changes to deal with toggle states and tint colo
 
 ```
 
+***Most importantly you need to keep your images black & white, and the black content needs to be identical to what you want to display. In addition they are no longer scaled by Apple, they must be the proper size they will be displaying in, something like 100x100 or lower)***
+
 ### View controller hierarchy
 
 The root view controller is a [_UIViewServiceViewControllerOperator](https://github.com/lechium/tvOS142Headers/blob/c7696f6d760e4822f61b9f2c2adcd18749700fda/System/Library/PrivateFrameworks/UIKitCore.framework/_UIViewServiceViewControllerOperator.h)
