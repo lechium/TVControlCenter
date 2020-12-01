@@ -9,7 +9,7 @@ Control Center on tvOS is split up into 3 components: TVSystemMenuService (An in
 
 This application is the control center of well... control center, it handles the actual UI that is displayed to the user and the handling of which modules are available and visible.
 
-### View controller heirarchy
+### View controller hierarchy
 
 The root view controller is a [_UIViewServiceViewControllerOperator](https://github.com/lechium/tvOS142Headers/blob/c7696f6d760e4822f61b9f2c2adcd18749700fda/System/Library/PrivateFrameworks/UIKitCore.framework/_UIViewServiceViewControllerOperator.h)
 
