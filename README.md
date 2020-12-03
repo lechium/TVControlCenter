@@ -3,7 +3,7 @@ Research &amp; Documentation on implementation of control center bundles on tvOS
 
 Control Center on tvOS is split up into 3 components: TVSystemMenuService (An invisible application), TVSystemMenuUI.framework (a private framework) and a series of bundles (stored in /System/Library/TVSystemMenuModules)
 
-![Screenshot](https://pbs.twimg.com/media/ELZ_vIGUcAEbft5?format=jpg&name=large "Screenshot")  <br/>
+![Screenshot](tvcc.png "Screenshot")  <br/>
 
 ## TVSystemMenuService
 
