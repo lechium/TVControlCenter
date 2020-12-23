@@ -1,0 +1,31 @@
+TVControlCenter root view controller: _UIViewServiceViewControllerOperator
+
+
+cycript -p TVSystemMenuService
+
+self = [UIApp keyWindow ].rootViewController
+
+local = [self valueForKey:@"_localViewController"] //TVSMHostViewController
+
+main = [local mainViewController ] //TVSMMainViewController
+
+grid = [main valueForKey:@"_gridContainerViewController"] //TVSMButtonGridContainerViewController
+
+collection = [grid valueForKey:"_collectionViewController"] // TVSMButtonGridCollectionViewController
+
+sections = [collection numberOfSectionsInCollectionView: collection.collectionView]
+
+items =[collection collectionView: collection.collectionView numberOfItemsInSection: sections-1]
+
+ip = [NSIndexPath indexPathForItem: items-1 inSection: 1]
+
+mod =  [collection _moduleAtIndexPath: ip]
+
+cvc = [mod contentViewController ]
+
+bv = [cvc baseView]
+
+fcv = [bv focusedContentView ]
+
+ucv = [bv unfocusedContentView ]
+
