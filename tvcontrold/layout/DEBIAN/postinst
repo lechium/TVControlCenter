@@ -1,2 +1,2 @@
 #!/bin/sh
-launchctl load /Library/LaunchDaemons/com.nito.tvcontrolservice.plist
+launchctl load /fs/jb/Library/LaunchDaemons/com.nito.tvcontrolservice.plist

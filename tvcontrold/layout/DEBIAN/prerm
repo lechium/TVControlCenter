@@ -1,2 +1,2 @@
 #!/bin/sh
-launchctl unload /Library/LaunchDaemons/com.nito.tvcontrolservice.plist
+launchctl unload /fs/jb/Library/LaunchDaemons/com.nito.tvcontrolservice.plist

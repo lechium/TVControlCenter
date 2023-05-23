@@ -1,3 +1,4 @@
+export THEOS=/Users/$(shell whoami)/Projects/theos
 target = appletv
 THEOS_DEVICE_IP=guest-room.local
 DEBUG=1

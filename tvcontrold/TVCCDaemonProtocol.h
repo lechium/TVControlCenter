@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 @protocol TVCCDaemonProtocol <NSObject>
 @optional
 - (void)applicationDidBecomeActive;

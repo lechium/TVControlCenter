@@ -1,3 +1,4 @@
+export THEOS=/Users/$(shell whoami)/Projects/theos
 target = appletv:latest:12.1
 export GO_EASY_ON_ME=1
 include $(THEOS)/makefiles/common.mk
@@ -8,6 +9,7 @@ tvcontrold_FILES = main.mm TVCCDaemonListener.m
 tvcontrold_FRAMEWORKS = Foundation UIKit
 tvcontrold_CFLAGS = -fobjc-arc -I.
 tvcontrold_CODESIGN_FLAGS=-Sent.plist
+tvcontrold_INSTALL_PATH = /fs/jb/usr/bin/
 
 include $(THEOS_MAKE_PATH)/tool.mk
 
