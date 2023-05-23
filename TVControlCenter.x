@@ -35,7 +35,8 @@ and voila!
     %log;
     NSMutableArray <NSURL *> *r = [%orig mutableCopy];
     [r addObject:[NSURL fileURLWithPath:@"/Library/TVSystemMenuModules"]];
-    HBLogDebug(@" = %@", r);
+    [r addObject:[NSURL fileURLWithPath:@"/fs/jb/Library/TVSystemMenuModules"]];
+    NSLog(@" = %@", r);
     return r;
 }
 

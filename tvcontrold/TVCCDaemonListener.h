@@ -9,7 +9,7 @@
 - (void)suspend;
 - (void)invalidate;
 @end
-
+/*
 @interface NSXPCInterface : NSObject
 
 + (NSXPCInterface *)interfaceWithProtocol:(Protocol *)protocol;
@@ -37,7 +37,7 @@
 -(BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 
 @end
-
+*/
 @interface TVCCDaemonListener : NSObject <NSXPCListenerDelegate, TVCCDaemonProtocol> {
     
 }

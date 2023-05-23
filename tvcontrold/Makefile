@@ -1,5 +1,5 @@
-target = appletv:12.1
-GO_EASY_ON_ME=1
+target = appletv:latest:12.1
+export GO_EASY_ON_ME=1
 include $(THEOS)/makefiles/common.mk
 
 TOOL_NAME = tvcontrold
