@@ -10,6 +10,10 @@
 
 @implementation CRModule
 
++ (id)availableStyles {
+    return @[@1];
+}
+
 +(long long)buttonStyle {
     return TVSMActionButtonStyleMedium;
 }

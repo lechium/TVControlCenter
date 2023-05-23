@@ -21,7 +21,17 @@ extern int proc_pidpath(int, void*, uint32_t);
 @interface NSXPCConnection (bro)
 - (int)processIdentifier;
 @end
+/*
+%hook TVSMActionModule
++ (id)availableStyles {
+    %log;
+    id orig = %orig;
+    NSLog(@"[TVControlCenter] availableStyles: %@", orig);
+    return orig;
+}
 
+%end
+*/
 /**
 
 TVControlCenter is a very basic tweak, just add another folder for processing our 3rd party bundles
@@ -30,17 +40,78 @@ and voila!
 */
 
 %hook _TVSMModuleInfo
-
+/*
++(id)allModuleInfos {
+    %log;
+    NSArray *orig = %orig;
+    NSLog(@"[TVControlCenter] allModuleInfos: %@", orig);
+    [orig enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"[TVControlCenter] moduleBundle: %@", [obj valueForKey:@"bundleURL"]);
+    }];
+    return orig;
+}
+*/
 +(id)_defaultModuleDirectories {
     %log;
     NSMutableArray <NSURL *> *r = [%orig mutableCopy];
     [r addObject:[NSURL fileURLWithPath:@"/Library/TVSystemMenuModules"]];
     [r addObject:[NSURL fileURLWithPath:@"/fs/jb/Library/TVSystemMenuModules"]];
-    NSLog(@" = %@", r);
+    NSLog(@"[TVControlCenter] = %@", r);
     return r;
 }
 
 %end
+
+%hook TVSMDefaultModuleDataSource
+/*
+- (NSMutableSet *)totalAvailableModuleIdentifiers {
+    NSMutableSet *og = %orig;
+    NSLog(@"[TVControlCenter] totalAvailableModuleIdentifiers: %@", og);
+    return og;
+}
+*/
+- (_Bool)shouldEnableModuleWithInfo:(id)arg1 {
+    %log;
+    _Bool og = %orig;
+    NSURL *bundleURL = (NSURL*)[arg1 valueForKey:@"bundleURL"];
+    NSString *path = [bundleURL path];
+    if ([path containsString:@"/fs/jb"]) {
+        NSLog(@"[TVControlCenter]: %@ contains prefix, force enable!", path);
+        og = true;
+    }
+    NSLog(@"[TVControlCenter] defaultModuleDataSource checking info: %@ shouldEnable: %d", arg1, og);
+    NSLog(@"[TVControlCenter] bundleURL: %@", [arg1 valueForKey:@"bundleURL"]);
+    return og;
+}
+
+%end
+/*
+%hook TVSMModuleDataSource
+
+- (NSMutableDictionary *)modulesByInfo {
+    %log;
+    NSMutableDictionary *orig = %orig;
+    NSLog(@"[TVControlCenter] modulesByInfo: %@", orig);
+    return orig;
+}
+
+- (NSArray *)availableModules {
+    %log;
+    NSArray *orig = %orig;
+    NSLog(@"[TVControlCenter] availableModules: %@", orig);
+    return orig;
+}
+
+- (_Bool)shouldEnableModuleWithInfo:(id)arg1 {
+    %log;
+    _Bool og = %orig;
+    NSLog(@"[TVControlCenter] checking info: %@ shouldEnable: %d", arg1, og);
+    NSLog(@"[TVControlCenter] bundleURL: %@", [arg1 valueForKey:@"bundleURL"]);
+    return og;
+}
+
+%end
+*/
 
 %hook AppDelegate
 
@@ -90,14 +161,14 @@ This hack removes that restriction entirely. Not a fan of this tbh but it will h
     //com.apple.private.security.container-required
     if (orig == nil){
         if ([processName isEqualToString:@"TVSystemMenuService"]){
-                NSLog(@"override entitlement: %@ for name: %@",entitlement,processName);
+                NSLog(@"[TVControlCenter] override entitlement: %@ for name: %@",entitlement,processName);
                 return [NSNumber numberWithBool:true];
         } else {
-            NSLog(@"[TVControlCenter.x] %@ %@ %@ for %@ is nil!!", self,NSStringFromSelector(_cmd),entitlement, processName);
+            NSLog(@"[TVControlCenter] %@ %@ %@ for %@ is nil!!", self,NSStringFromSelector(_cmd),entitlement, processName);
         }
     } else {
         if ([entitlement isEqualToString:@"com.apple.private.security.container-required"]){
-            NSLog(@"[TVControlCenter.x] %@ %@ %@ for %@ override false!!", self,NSStringFromSelector(_cmd),entitlement, processName);
+            NSLog(@"[TVControlCenter] %@ %@ %@ for %@ override false!!", self,NSStringFromSelector(_cmd),entitlement, processName);
             return [NSNumber numberWithBool:false];
         }
     }
